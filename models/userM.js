@@ -18,7 +18,7 @@ exports.join=async(userdata)=>{
     }
 }
 
-exports.info=async(userid)=>{
+exports.login=async(userid)=>{
     var query=`SELECT * FROM USERS WHERE id="${userid}"`;
     try {
         const result=await db.queryParam(query);
@@ -28,9 +28,6 @@ exports.info=async(userid)=>{
         return errret;
     }
 }
-// exports.info=async(idx)=>{
-//     const query 
-// }
 
 exports.jwtvalue=async(idx)=>{
     const query="SELECT * FROM USERS WHERE idx="+idx;

@@ -24,7 +24,7 @@ exports.join=async(req,res)=>{ // name, id , pw , phone
 exports.login=async(req,res)=>{
     const userdata=req.body;
     try {
-        var user=await userM.info(userdata.id);
+        var user=await userM.login(userdata.id);
         if(user[0].pw==userdata.pw){
             //jwt 토큰 생성 후 전달 
             const token=await jwt.sign(user[0]);   

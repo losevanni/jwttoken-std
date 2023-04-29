@@ -15,8 +15,8 @@ exports.boardWrite=async(req,res)=>{
     var inputdata= req.body;
     var user_idx=req.user_idx;
     //유저 를 idx로 조회
-    const userinfo=await userM.info(user_idx);
-    const result= await boardM.writeBoard(userinfo,inputdata);
+    const userinfo=await userM.jwtvalue(user_idx);
+    const result= await boardM.writeBoard(userinfo[0],inputdata);
     console.log(result);
     res.redirect('/');
 }

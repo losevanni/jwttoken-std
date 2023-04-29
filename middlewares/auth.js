@@ -1,9 +1,6 @@
 const { secretKey } = require('../config/secretkey');
 const jwt = require('../modules/jwt');
 
-// const MSG = require('../models/responseMessage');
-// const CODE = require('../models/statusCode');
-// const util = require('../models/util');
 const TOKEN_EXPIRED = -3;
 const TOKEN_INVALID = -2;
 
