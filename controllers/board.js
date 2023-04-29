@@ -4,7 +4,7 @@ const userM=require('../models/userM');
 exports.listBoards = async(req,res)=>{
     const boards=await boardM.getAllBoard();
     console.log(boards);
-    res.send('goodboards');
+    res.render('boardList.ejs',{board : boards});
 }
 
 exports.boardWrite_view=async(req,res)=>{
