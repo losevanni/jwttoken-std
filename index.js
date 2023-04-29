@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const cookieParser=require('cookie-parser');
+app.use(cookieParser());
 const router=express.Router();
 const http=require('http');
 const bodyParser=require('body-parser');

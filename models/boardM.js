@@ -15,10 +15,10 @@ exports.getAllBoard=async()=>{
     }
 }
 
-exports.writeBoard=async(userdata,boarddata)=>{ //idx ,id, title, content, user_idx
+exports.writeBoard=async(userinfo,boarddata)=>{ //idx ,id, title, content, user_idx
     const questions='?, ?, ?, ?';
     var query= `INSERT INTO BOARDS ( idx, id, title, content ) VALUES ( ${questions})`;
-    var dataarr=[userdata.idx,userdata.id,boarddata.title,boarddata,content];
+    var dataarr=[userinfo.idx, userinfo.id, boarddata.title, boarddata.content];
     try {
         const result = await db.queryParamArr(query,dataarr);
         return result;

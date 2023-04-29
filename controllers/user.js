@@ -24,11 +24,12 @@ exports.join=async(req,res)=>{ // name, id , pw , phone
 exports.login=async(req,res)=>{
     const userdata=req.body;
     try {
-        var user=await userM.login(userdata.id);
+        var user=await userM.info(userdata.id);
         if(user[0].pw==userdata.pw){
             //jwt 토큰 생성 후 전달 
-            token=await jwt.sign(userdata);
-            res.cookie("node_token",token)
+            const token=await jwt.sign(user[0]);   
+            //token 만 보내야한 다 리프레쉬 는 필요 없음       
+            res.cookie('node_token',token.token)
             .status(200)
             .redirect('/');
         }else{

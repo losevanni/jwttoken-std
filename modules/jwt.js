@@ -23,6 +23,7 @@ module.exports={
         try {
             decoded=jwt.verify(token,secretKey);
         } catch (err) {
+            console.log(err.message);
             if(err.message==='jwt expired'){
                 console.log('expired token');
                 return TOKEN_EXPIRED;
@@ -34,13 +35,15 @@ module.exports={
                 return TOKEN_INVALID;
             }
         }
+        return decoded;
     },
-    signin:async(userdata)=>{ //idx를 넣어 받은 값으로 jwt 토큰 생성
-        const jwtToken=await jwt.sign(user);
-        return res.status(statuscode.OK).send(util.success(statusCode.OK,responseMsg.LOGIN_SUCCESS,{
-            token:jwtToken.token
-        }))
+
+    // signin:async(userdata)=>{ //idx를 넣어 받은 값으로 jwt 토큰 생성
+    //     const jwtToken=await jwt.sign(user);
+    //     return res.status(statuscode.OK).send(util.success(statusCode.OK,responseMsg.LOGIN_SUCCESS,{
+    //         token:jwtToken.token
+    //     }))
     
-    }
+    // }
 }
 

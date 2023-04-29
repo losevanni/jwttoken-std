@@ -1,5 +1,5 @@
 const boardM=require('../models/boardM');
-
+const userM=require('../models/userM');
 
 exports.listBoards = async(req,res)=>{
     const boards=await boardM.getAllBoard();
@@ -13,12 +13,12 @@ exports.boardWrite_view=async(req,res)=>{
 
 exports.boardWrite=async(req,res)=>{
     var inputdata= req.body;
-    // 유저의 정보를 게시물에 넣어야함 
-    // 유저의 정보는 어디에 ?
-    // 로그인 되어있는 유저 만 작성 할수있어야만함
-    const result= await boardM.writeBoard(userdata);
+    var user_idx=req.user_idx;
+    //유저 를 idx로 조회
+    const userinfo=await userM.info(user_idx);
+    const result= await boardM.writeBoard(userinfo,inputdata);
     console.log(result);
-    res.send('good write');
+    res.redirect('/');
 }
 
 exports.boardDetail=async(req,res)=>{
