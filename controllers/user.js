@@ -31,7 +31,9 @@ exports.login=async(req,res)=>{
             res.cookie("node_token",token)
             .status(200)
             .redirect('/');
-        };
+        }else{
+            res.redirect('/login');
+        }
     } catch (error) {
         console.log(error);
         res

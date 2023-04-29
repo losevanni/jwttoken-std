@@ -7,17 +7,18 @@ const TOKEN_INVALID = -2;
 
 const authUtill={
     checkToken:async(req,res,next)=>{
-        var token =req.headers.token;   
+        var token =req.headers.cookie;
+        console.log(token);   
         if(!token)
             return res.send("token not found");
-        const user=await jwt.verify(token);
-        if (user=== TOKEN_EXPIRED)
+        const tokeninfo=await jwt.verify(token);
+        if (tokeninfo=== TOKEN_EXPIRED)
             return res.send("token time error");
-        if(user=== TOKEN_INVALID)
+        if(tokeninfo=== TOKEN_INVALID)
             return res.send('not use token');
-        if(user.idx===undefined)
-            return res.send('not user idx')
-        req.idx=user.idx;
+        // if(user.idx===undefined)
+        //     return res.send('not user idx')
+        // req.idx=user.idx;
         next();
     }   
 }

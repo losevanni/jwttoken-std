@@ -17,7 +17,8 @@ router.get('/login',user.loginView);
 router.post('/login',user.login);
 
 router.get('/board/list',board.listBoards);
-router.post('/board/write',board.boardWrite);
+router.get('/board/write',authUtill,board.boardWrite_view);
+router.post('/board/write',authUtill,board.boardWrite);
 router.get('/board/detail/:idx',board.boardDetail);
 // router('/board').get('/list',board.list);
 module.exports=router;
