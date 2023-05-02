@@ -20,5 +20,8 @@ router.get('/board/list',board.listBoards);
 router.get('/board/write',authUtill,board.boardWrite_view);
 router.post('/board/write',authUtill,board.boardWrite);
 router.get('/board/detail/:idx',board.boardDetail);
+router.get('/board/edit/:idx',authUtill,board.boardEdit_view);
+router.post('/board/edit',authUtill,board.boardEdit);
+router.post('/board/delete',authUtill,board.boardDelete);
 // router('/board').get('/list',board.list);
 module.exports=router;

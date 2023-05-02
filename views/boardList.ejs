@@ -16,7 +16,7 @@
         <!-- nav html 첨부 -->
         <%- include('nav.html') %>
         
-        <h4 class="ml-2 my-3 text-center ">서버에서 가져온 할일 리스트</h4>
+        <h4 class="ml-2 my-3 text-center ">게시물</h4>
         
         <div class="container input-group mb-2">
             <input class="form-control" id="search-input">
@@ -33,8 +33,8 @@
             <% for(var i = 0 ; i < board.length ; i++){ %>
             <li class="list-group-item">
                 <p>글번호 : <%= board[i].idx%></p>
-                <a href="/board/detail/<%= posts[i].idx %>" ><h4>Title: <%= board[i].TITLE %> </h4>
-                    <h3>ID <%= board[i].id %></h3></a>
+                <a href="/board/detail/<%= board[i].idx %>" ><h4>Title: <%= board[i].title %> </h4>
+                    <h3>ID <%= board[i].user_id %></h3></a>
         
                 <!-- <button class="delete btn btn-danger" data-id="<%= board[i]._id %>">삭제</button> -->
                 <!-- <button type="button" >수정</button> -->

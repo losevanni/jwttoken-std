@@ -7,35 +7,29 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    
-    <!-- 사용자 지정 css -->
-    <!-- <link rel="stylesheet" href="/public/main.css" > -->
-
-    <title>Main</title>
+<!-- nav -->
+    <title>Modify</title>
     </head>
     <body>
-
         <%- include('nav.html') %>
 
-    <div class="container">
-        <h4 class="text-center">상세 페이지</h4>
-        <div class="card" style="width: 100%;">
-            <div class="card-body">
-                <h5 class="card-title">제목: <%= board.idx %> 게시물의 <%= board.title %> </h5>
-                <h6 class="card-subtitle mb-2 text-muted">게시물의 <%= board.content %> </h6>
-                <p class="card-text"></p>
-                <!-- 기능 구현 필요 -->
-                <a href="/board/edit/<%= board.idx %>" class="card-link">수정 하기</a>
-                
-                <form action="/board/delete" method="POST" >
-                    <input type="hidden" name="idx" value="<%= board.idx %>">
-                    <button type="submit" class="btn btn-primary">삭제 하기</button>
-                </form>
+
+<!-- write form -->
+        <div class="container mt-4" >
+            <h4 class="text-center"><%= board.idx%> 게시물 </h4>
+            <form action="/board/edit" method="POST">
+            <div class="form-group">
+                <label>To do</label>
+                <input value="<%= board.idx %>" name="idx" style="display: none" type="hidden">
+                <input type="text" class="form-control"  name="title" value="<%= board.title %>">
             </div>
+            <div class="form-group">
+                <label>due date</label>
+                <input type="text" class="form-control"  name="content" value="<%= board.content %>">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
-    </div>
-
-
 
 
     <!-- Optional JavaScript; choose one of the two! -->
@@ -52,3 +46,10 @@
     -->
     </body>
 </html>
+
+
+
+
+
+
+

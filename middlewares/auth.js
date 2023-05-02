@@ -19,6 +19,7 @@ const authUtill={
         if(tokeninfo.idx===undefined) // idx 가 없음
             return res.send('not user idx')
         req.user_idx=tokeninfo.idx; // req에 유저 idx 값 을 넣는다 number임
+        req.user_id=tokeninfo.id;
         next();
     }   
 }
