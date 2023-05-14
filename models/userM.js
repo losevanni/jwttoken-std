@@ -7,14 +7,14 @@ exports.join=async(userdata)=>{
     const questions='?, ?, ?, ?';
     var query= `INSERT INTO USERS (id, pw, name, phone) VALUES ( ${questions})`;
     var dataarr=[userdata.id,userdata.pw,userdata.name,userdata.phone];
-    console.log(query,dataarr);
     try {
         const result=await db.queryParamArr(query,dataarr);
-        const insertId=result.insertId;
+        //여기서 무슨 값을 result 가 받는지 알아보기
+        const insertId=result;
         return insertId;
     } catch (error) {
         
-        console.log(error);
+        console.log('[err]',error);
     }
 }
 

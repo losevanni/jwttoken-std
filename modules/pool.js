@@ -8,7 +8,7 @@ module.exports={
                 const connection=await pool.getConnection();
                 try {
                     const result=await connection.query(query);
-                    // pool.release(connection);
+                    // pool.release(connectio);
                     resolve(result);
                 } catch (error) {
                     // pool.release(connection);

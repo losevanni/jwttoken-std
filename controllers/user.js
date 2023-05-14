@@ -10,15 +10,13 @@ exports.loginView=async(req,res)=>{
 
 exports.join=async(req,res)=>{ // name, id , pw , phone
     const userdata=req.body;
-    console.log(userdata);
     try {
         const result =userM.join(userdata); 
-        console.log(result);   
+        // console.log(result[0]);   
+        res.redirect('/login');
     } catch (error) {
         return res.send('fail');
     }
-    
-    res.redirect('login.ejs');
 };
 
 exports.login=async(req,res)=>{
@@ -27,7 +25,8 @@ exports.login=async(req,res)=>{
         var user=await userM.login(userdata.id);
         if(user[0].pw==userdata.pw){
             //jwt 토큰 생성 후 전달 
-            const token=await jwt.sign(user[0]);   
+            const token=await jwt.sign(user[0]); 
+            console.log(token);  
             //token 만 보내야한 다 리프레쉬 는 필요 없음       
             res.cookie('node_token',token.token)
             .status(200)
